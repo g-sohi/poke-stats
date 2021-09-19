@@ -3,12 +3,14 @@ const bodyParser = require("body-parser");
 const getJSON = require("get-json");
 
 const app = express();
+app.use(express.static('public'));
+app.set('views', './views');
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/index.html");
+    res.render('index');
 })
 
 app.post("/", function(req, res){
